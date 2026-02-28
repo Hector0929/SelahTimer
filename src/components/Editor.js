@@ -18,7 +18,7 @@ export default function Editor({
     value = '',
     onChange,
     saveStatus = 'idle',
-    placeholder = '寫下你的靈修心得...\n\n支援 Markdown 格式：\n# 標題\n**粗體** *斜體*\n- 列表項目\n> 引用經文',
+    placeholder = '寫下你的靈修心得...',
 }) {
     const [mode, setMode] = useState('edit'); // 'edit' | 'preview'
 
@@ -71,7 +71,7 @@ export default function Editor({
                         className={styles.textarea}
                         value={value}
                         onChange={handleChange}
-                        placeholder={placeholder}
+                        placeholder="寫下你的靈修心得..."
                         spellCheck={false}
                     />
                 ) : (

@@ -203,7 +203,7 @@ export default function WorkspacePage() {
                         value={content}
                         onChange={setContent}
                         saveStatus={saveStatus}
-                        placeholder="寫下你的靈修心得...\n\n支援 Markdown 格式：\n# 標題\n**粗體** *斜體*\n- 列表項目\n> 引用經文"
+                        placeholder="寫下你的靈修心得..."
                     />
                 </div>
             </div>

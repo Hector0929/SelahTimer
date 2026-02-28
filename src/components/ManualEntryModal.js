@@ -204,7 +204,7 @@ export default function ManualEntryModal({ isOpen, onClose, onSubmit, userId }) 
                                 value={content}
                                 onChange={(e) => setContent(e.target.value)}
                                 rows={3}
-                                placeholder="補錄時的靈修心得..."
+                                placeholder="寫下你的靈修心得..."
                             />
                         </div>
 

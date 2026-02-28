@@ -150,7 +150,7 @@ export default function EditDurationModal({ isOpen, onClose, onSubmit, record, u
                                 className="textarea"
                                 value={content}
                                 onChange={(e) => setContent(e.target.value)}
-                                rows={4}
+                                placeholder="寫下你的靈修心得..."
                             />
                         </div>
 
