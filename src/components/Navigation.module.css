@@ -4,10 +4,18 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(18, 18, 18, 0.9);
+    background: var(--bg-primary);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-subtle);
     transition: background var(--transition-normal);
+}
+
+[data-theme="dark"] .nav {
+    background: rgba(18, 18, 18, 0.85);
+}
+
+[data-theme="monster"] .nav {
+    background: rgba(254, 249, 231, 0.9);
 }
 
 [data-theme="light"] .nav {

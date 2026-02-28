@@ -1,11 +1,12 @@
 'use client';
 
 import { AuthProvider, useAuth } from '@/contexts/AuthContext';
+import { ThemeProvider } from '@/contexts/ThemeContext';
 import Navigation from '@/components/Navigation';
 
 /**
  * 客戶端 Layout Provider
- * 包裹 AuthProvider 與 Navigation
+ * 包裹 ThemeProvider, AuthProvider 與 Navigation
  */
 function InnerLayout({ children }) {
     const { user, loading } = useAuth();
@@ -33,8 +34,10 @@ function InnerLayout({ children }) {
 
 export default function ClientLayout({ children }) {
     return (
-        <AuthProvider>
-            <InnerLayout>{children}</InnerLayout>
-        </AuthProvider>
+        <ThemeProvider>
+            <AuthProvider>
+                <InnerLayout>{children}</InnerLayout>
+            </AuthProvider>
+        </ThemeProvider>
     );
 }

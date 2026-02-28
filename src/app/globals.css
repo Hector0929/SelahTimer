@@ -7,7 +7,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Noto+Serif+TC:wght@400;600;700&display=swap');
 
 /* --- 深色金色主題 (預設) --- */
-:root {
+/* --- 主題定義 --- */
+
+:root,
+[data-theme="monster"] {
   /* 色彩系統 — 活潑溫暖調 (參考怪獸村莊設計) */
   --bg-primary: #FEF9E7;
   /* 溫暖奶油黃 */
@@ -28,7 +31,6 @@
   --accent-primary-muted: rgba(255, 183, 77, 0.15);
   --accent-primary-glow: rgba(255, 183, 77, 0.3);
   --accent-primary-subtle: rgba(255, 183, 77, 0.05);
-  /* Added missing subtle accent */
 
   /* 輔助色 — 粉嫩调 */
   --accent-success: #81C784;
@@ -54,27 +56,6 @@
   /* 邊框 */
   --border-subtle: rgba(93, 64, 55, 0.06);
   --border-default: rgba(93, 64, 55, 0.1);
-  --border-focus: var(--accent-primary);
-
-  /* 間距 */
-  --space-xs: 4px;
-  --space-sm: 8px;
-  --space-md: 16px;
-  --space-lg: 24px;
-  --space-xl: 32px;
-  --space-2xl: 48px;
-  --space-3xl: 64px;
-
-  /* 圓角 — 更圓滑活潑 */
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
-  --radius-xl: 32px;
-  --radius-full: 9999px;
-
-  /* 字型 */
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-serif: 'Noto Serif TC', Georgia, serif;
 
   /* 陰影 — 軟陰影 */
   --shadow-sm: 0 2px 4px rgba(93, 64, 55, 0.05);
@@ -82,18 +63,11 @@
   --shadow-lg: 0 12px 40px rgba(93, 64, 55, 0.12);
   --shadow-glow: 0 0 15px var(--accent-primary-glow);
 
-  /* 過渡 */
-  --transition-fast: 150ms ease;
-  --transition-normal: 250ms ease;
-  --transition-slow: 400ms ease;
-
-  /* 主題色 */
   color-scheme: light;
-  /* Changed to light as per the new color scheme */
 }
 
-/* --- 淺色主題 (白底 + 藍色，來自 Stitch Light Dashboard) --- */
 [data-theme="light"] {
+  /* 色彩系統 — 乾淨白藍調 (來自 Stitch Light) */
   --bg-primary: #ffffff;
   --bg-secondary: #f8fafc;
   --bg-card: #ffffff;
@@ -101,14 +75,14 @@
   --bg-input: #f8fafc;
   --bg-modal-overlay: rgba(0, 0, 0, 0.4);
 
-  /* 主色調 — 藍色 #0369a1 */
-  --accent-primary: #0369a1;
-  --accent-primary-hover: #0284c7;
-  --accent-primary-muted: rgba(3, 105, 161, 0.1);
-  --accent-primary-glow: rgba(3, 105, 161, 0.2);
-  --accent-primary-subtle: rgba(3, 105, 161, 0.05);
+  /* 主色調 — 專業藍 */
+  --accent-primary: #0284c7;
+  --accent-primary-hover: #0369a1;
+  --accent-primary-muted: rgba(2, 132, 199, 0.1);
+  --accent-primary-glow: rgba(2, 132, 199, 0.2);
+  --accent-primary-subtle: rgba(2, 132, 199, 0.05);
 
-  /* 輔助色（淺色版） */
+  /* 輔助色 */
   --accent-success: #16a34a;
   --accent-success-muted: rgba(22, 163, 74, 0.1);
   --accent-danger: #dc2626;
@@ -116,7 +90,7 @@
   --accent-info: #e0f2fe;
   --accent-info-muted: rgba(224, 242, 254, 0.8);
 
-  /* 文字 */
+  /* 文字 — 藍深灰 */
   --text-primary: #1e293b;
   --text-secondary: #64748b;
   --text-muted: #94a3b8;
@@ -125,15 +99,79 @@
   /* 邊框 */
   --border-subtle: #e2e8f0;
   --border-default: #cbd5e1;
-  --border-focus: var(--accent-primary);
 
-  /* 陰影（淺色版） */
+  /* 陰影 */
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
   --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.1);
   --shadow-glow: 0 0 20px var(--accent-primary-glow);
 
   color-scheme: light;
+}
+
+[data-theme="dark"] {
+  /* 色彩系統 — 高質感黑金調 (恢復原本黑色) */
+  --bg-primary: #121212;
+  --bg-secondary: #1A1A1A;
+  --bg-card: #1E1E1E;
+  --bg-card-hover: #212121;
+  --bg-input: #1A1A1A;
+  --bg-modal-overlay: rgba(0, 0, 0, 0.7);
+
+  /* 主色調 — 暖金 */
+  --accent-primary: #D4AF37;
+  --accent-primary-hover: #E5C158;
+  --accent-primary-muted: rgba(212, 175, 55, 0.15);
+  --accent-primary-glow: rgba(212, 175, 55, 0.3);
+  --accent-primary-subtle: rgba(212, 175, 55, 0.05);
+
+  /* 輔助色 */
+  --accent-success: #4ade80;
+  --accent-success-muted: rgba(74, 222, 128, 0.15);
+  --accent-danger: #f87171;
+  --accent-danger-muted: rgba(248, 113, 113, 0.15);
+  --accent-info: #60a5fa;
+  --accent-info-muted: rgba(96, 165, 250, 0.15);
+
+  /* 文字 — 亮灰白 */
+  --text-primary: #EAEAEA;
+  --text-secondary: #A1A1AA;
+  --text-muted: #6b6b80;
+  --text-inverse: #121212;
+
+  /* 邊框 */
+  --border-subtle: rgba(212, 175, 55, 0.08);
+  --border-default: rgba(212, 175, 55, 0.2);
+
+  /* 陰影 */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 8px 48px rgba(0, 0, 0, 0.6);
+  --shadow-glow: 0 0 20px var(--accent-primary-glow);
+
+  color-scheme: dark;
+}
+
+/* --- 共享非色彩變數 --- */
+:root {
+  --border-focus: var(--accent-primary);
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 32px;
+  --radius-full: 9999px;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-serif: 'Noto Serif TC', Georgia, serif;
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow: 400ms ease;
 }
 
 /* --- 全域重設 --- */
