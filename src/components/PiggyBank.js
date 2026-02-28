@@ -39,7 +39,15 @@ export default function PiggyBank({ yearTotal = 0, yearSessionCount = 0, year = 
 
                     {/* 投幣動畫（每次載入閃一次） */}
                     {yearSessionCount > 0 && (
-                        <div className={styles.coinDrop}>🪙</div>
+                        <div className={styles.coinDrop}>
+                            <Image
+                                src="/images/coin.png"
+                                alt="coin"
+                                width={60}
+                                height={60}
+                                priority
+                            />
+                        </div>
                     )}
                 </div>
 
