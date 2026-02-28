@@ -86,9 +86,6 @@ export default function RecordList({ records = [], onEdit, onDelete }) {
                                     {record.is_manual && (
                                         <span className="badge badge-manual">手動</span>
                                     )}
-                                    {!record.is_manual && (
-                                        <span className="badge badge-auto">自動</span>
-                                    )}
                                 </div>
                             </div>
 
