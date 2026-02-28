@@ -1,6 +1,4 @@
-// Firebase 初始化設定
-// 請將下方的 firebaseConfig 替換為您自己的 Firebase 專案設定
-import { initializeApp } from 'firebase/app';
+import { initializeApp, getApps, getApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 import { getAuth, GoogleAuthProvider } from 'firebase/auth';
 
@@ -13,10 +11,18 @@ const firebaseConfig = {
     appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
-// 初始化 Firebase
-const app = initializeApp(firebaseConfig);
+let app;
+let db = null;
+let auth = null;
 
-// 匯出 Firestore 與 Auth 實例
-export const db = getFirestore(app);
-export const auth = getAuth(app);
+// 僅在有 API Key 時初始化，避免在 build 期間報錯
+if (firebaseConfig.apiKey && firebaseConfig.apiKey !== 'your_api_key') {
+    app = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig);
+    db = getFirestore(app);
+    auth = getAuth(app);
+} else if (typeof window !== 'undefined') {
+    console.warn("Firebase 配置缺失。請檢查環境變數套用是否正確。");
+}
+
+export { db, auth };
 export const googleProvider = new GoogleAuthProvider();
