@@ -10,12 +10,14 @@ import {
     calculateStreak,
     getWeeklyStats,
     getMonthlyStats,
+    getYearlyStats,
 } from '@/lib/devotionService';
 import StatsCards from '@/components/StatsCards';
 import WeeklyChart from '@/components/WeeklyChart';
 import RecordList from '@/components/RecordList';
 import ManualEntryModal from '@/components/ManualEntryModal';
 import EditDurationModal from '@/components/EditDurationModal';
+import PiggyBank from '@/components/PiggyBank';
 import styles from './dashboard.module.css';
 
 export default function DashboardPage() {
@@ -26,6 +28,7 @@ export default function DashboardPage() {
     const [streak, setStreak] = useState(0);
     const [weeklyStats, setWeeklyStats] = useState({ dailyStats: Array(7).fill(0), weekTotal: 0, dayLabels: [] });
     const [monthlyStats, setMonthlyStats] = useState({ monthTotal: 0, sessionCount: 0 });
+    const [yearlyStats, setYearlyStats] = useState({ yearTotal: 0, yearSessionCount: 0, year: 2026 });
     const [loading, setLoading] = useState(true);
 
     // Modal 狀態
@@ -37,17 +40,19 @@ export default function DashboardPage() {
         if (!user) return;
 
         try {
-            const [records, streak, weekly, monthly] = await Promise.all([
+            const [records, streak, weekly, monthly, yearly] = await Promise.all([
                 getRecords(user.uid),
                 calculateStreak(user.uid),
                 getWeeklyStats(user.uid),
                 getMonthlyStats(user.uid),
+                getYearlyStats(user.uid),
             ]);
 
             setRecords(records);
             setStreak(streak);
             setWeeklyStats(weekly);
             setMonthlyStats(monthly);
+            setYearlyStats(yearly);
         } catch (error) {
             console.error('載入資料失敗:', error);
         } finally {
@@ -111,6 +116,13 @@ export default function DashboardPage() {
                 weekTotal={weeklyStats.weekTotal}
                 monthTotal={monthlyStats.monthTotal}
                 sessionCount={monthlyStats.sessionCount}
+            />
+
+            {/* 靈修撲滿 */}
+            <PiggyBank
+                yearTotal={yearlyStats.yearTotal}
+                yearSessionCount={yearlyStats.yearSessionCount}
+                year={yearlyStats.year}
             />
 
             {/* 週報圖表 */}

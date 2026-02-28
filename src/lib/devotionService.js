@@ -278,3 +278,28 @@ export async function getMonthlyStats(userId) {
 
     return { monthTotal, sessionCount };
 }
+
+/**
+ * 取得年度統計資料（撲滿概念用）
+ */
+export async function getYearlyStats(userId) {
+    const records = await getRecords(userId);
+    const now = new Date();
+    const yearStart = new Date(now.getFullYear(), 0, 1);
+
+    let yearTotal = 0;
+    let yearSessionCount = 0;
+
+    records.forEach((record) => {
+        const date = record.start_time?.toDate?.()
+            ? record.start_time.toDate()
+            : new Date(record.start_time);
+
+        if (date >= yearStart) {
+            yearTotal += record.total_duration || 0;
+            yearSessionCount++;
+        }
+    });
+
+    return { yearTotal, yearSessionCount, year: now.getFullYear() };
+}
