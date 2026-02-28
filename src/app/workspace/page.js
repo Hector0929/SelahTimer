@@ -12,6 +12,7 @@ import {
 } from '@/lib/devotionService';
 import Timer from '@/components/Timer';
 import Editor from '@/components/Editor';
+import ProtectedRoute from '@/components/ProtectedRoute';
 import styles from './workspace.module.css';
 
 export default function WorkspacePage() {
@@ -174,47 +175,49 @@ export default function WorkspacePage() {
     }
 
     return (
-        <div className={styles.container}>
-            <div className={styles.workspace}>
-                {/* 錯誤提示 */}
-                {error && (
-                    <div className={styles.errorBanner}>
-                        <span>⚠️ {error}</span>
-                        <button onClick={() => setError(null)} className={styles.errorClose}>✕</button>
+        <ProtectedRoute>
+            <div className={styles.container}>
+                <div className={styles.workspace}>
+                    {/* 錯誤提示 */}
+                    {error && (
+                        <div className={styles.errorBanner}>
+                            <span>⚠️ {error}</span>
+                            <button onClick={() => setError(null)} className={styles.errorClose}>✕</button>
+                        </div>
+                    )}
+
+                    {/* 計時器區 */}
+                    <div className={styles.timerSection}>
+                        <Timer
+                            initialSeconds={elapsed}
+                            isRunning={isRunning}
+                            onStart={handleStart}
+                            onPause={handlePause}
+                            onComplete={handleComplete}
+                            onTick={handleTick}
+                            syncStatus={syncStatus}
+                        />
+                    </div>
+
+                    {/* 編輯器區 */}
+                    <div className={styles.editorSection}>
+                        <Editor
+                            value={content}
+                            onChange={setContent}
+                            saveStatus={saveStatus}
+                            placeholder="寫下你的靈修心得..."
+                        />
+                    </div>
+                </div>
+
+                {/* 完成中遮罩 */}
+                {isCompleting && (
+                    <div className={styles.completingOverlay}>
+                        <div className="spinner" />
+                        <p>正在儲存紀錄...</p>
                     </div>
                 )}
-
-                {/* 計時器區 */}
-                <div className={styles.timerSection}>
-                    <Timer
-                        initialSeconds={elapsed}
-                        isRunning={isRunning}
-                        onStart={handleStart}
-                        onPause={handlePause}
-                        onComplete={handleComplete}
-                        onTick={handleTick}
-                        syncStatus={syncStatus}
-                    />
-                </div>
-
-                {/* 編輯器區 */}
-                <div className={styles.editorSection}>
-                    <Editor
-                        value={content}
-                        onChange={setContent}
-                        saveStatus={saveStatus}
-                        placeholder="寫下你的靈修心得..."
-                    />
-                </div>
             </div>
-
-            {/* 完成中遮罩 */}
-            {isCompleting && (
-                <div className={styles.completingOverlay}>
-                    <div className="spinner" />
-                    <p>正在儲存紀錄...</p>
-                </div>
-            )}
-        </div>
+        </ProtectedRoute>
     );
 }

@@ -16,8 +16,8 @@ import StatsCards from '@/components/StatsCards';
 import WeeklyChart from '@/components/WeeklyChart';
 import RecordList from '@/components/RecordList';
 import ManualEntryModal from '@/components/ManualEntryModal';
-import EditDurationModal from '@/components/EditDurationModal';
 import PiggyBank from '@/components/PiggyBank';
+import ProtectedRoute from '@/components/ProtectedRoute';
 import styles from './dashboard.module.css';
 
 export default function DashboardPage() {
@@ -95,68 +95,70 @@ export default function DashboardPage() {
     }
 
     return (
-        <div className={styles.container}>
-            {/* 頁面頭部 */}
-            <div className={styles.header}>
-                <div>
-                    <h1 className={styles.title}>總覽</h1>
-                    <p className={styles.subtitle}>你的靈修成長總覽</p>
+        <ProtectedRoute>
+            <div className={styles.container}>
+                {/* 頁面頭部 */}
+                <div className={styles.header}>
+                    <div>
+                        <h1 className={styles.title}>總覽</h1>
+                        <p className={styles.subtitle}>你的靈修成長總覽</p>
+                    </div>
+                    <button
+                        className="btn btn-primary"
+                        onClick={() => setShowManualEntry(true)}
+                    >
+                        ＋ 新增紀錄
+                    </button>
                 </div>
-                <button
-                    className="btn btn-primary"
-                    onClick={() => setShowManualEntry(true)}
-                >
-                    ＋ 新增紀錄
-                </button>
-            </div>
 
-            {/* 統計卡片 */}
-            <StatsCards
-                streak={streak}
-                weekTotal={weeklyStats.weekTotal}
-                monthTotal={monthlyStats.monthTotal}
-                sessionCount={monthlyStats.sessionCount}
-            />
+                {/* 統計卡片 */}
+                <StatsCards
+                    streak={streak}
+                    weekTotal={weeklyStats.weekTotal}
+                    monthTotal={monthlyStats.monthTotal}
+                    sessionCount={monthlyStats.sessionCount}
+                />
 
-            {/* 靈修撲滿 */}
-            <PiggyBank
-                yearTotal={yearlyStats.yearTotal}
-                yearSessionCount={yearlyStats.yearSessionCount}
-                year={yearlyStats.year}
-            />
+                {/* 靈修撲滿 */}
+                <PiggyBank
+                    yearTotal={yearlyStats.yearTotal}
+                    yearSessionCount={yearlyStats.yearSessionCount}
+                    year={yearlyStats.year}
+                />
 
-            {/* 週報圖表 */}
-            <WeeklyChart
-                dailyStats={weeklyStats.dailyStats}
-                dayLabels={weeklyStats.dayLabels}
-            />
+                {/* 週報圖表 */}
+                <WeeklyChart
+                    dailyStats={weeklyStats.dailyStats}
+                    dayLabels={weeklyStats.dayLabels}
+                />
 
-            {/* 歷史紀錄 */}
-            <div className={styles.section}>
-                <h2 className={styles.sectionTitle}>歷史紀錄</h2>
-                <RecordList
-                    records={records}
-                    onEdit={(record) => setEditingRecord(record)}
-                    onDelete={handleDeleteRecord}
+                {/* 歷史紀錄 */}
+                <div className={styles.section}>
+                    <h2 className={styles.sectionTitle}>歷史紀錄</h2>
+                    <RecordList
+                        records={records}
+                        onEdit={(record) => setEditingRecord(record)}
+                        onDelete={handleDeleteRecord}
+                    />
+                </div>
+
+                {/* 手動補錄 Modal */}
+                <ManualEntryModal
+                    isOpen={showManualEntry}
+                    onClose={() => setShowManualEntry(false)}
+                    onSubmit={handleManualEntry}
+                    userId={user?.uid}
+                />
+
+                {/* 編輯紀錄 Modal */}
+                <EditDurationModal
+                    isOpen={!!editingRecord}
+                    onClose={() => setEditingRecord(null)}
+                    onSubmit={handleEditRecord}
+                    record={editingRecord}
+                    userId={user?.uid}
                 />
             </div>
-
-            {/* 手動補錄 Modal */}
-            <ManualEntryModal
-                isOpen={showManualEntry}
-                onClose={() => setShowManualEntry(false)}
-                onSubmit={handleManualEntry}
-                userId={user?.uid}
-            />
-
-            {/* 編輯紀錄 Modal */}
-            <EditDurationModal
-                isOpen={!!editingRecord}
-                onClose={() => setEditingRecord(null)}
-                onSubmit={handleEditRecord}
-                record={editingRecord}
-                userId={user?.uid}
-            />
-        </div>
+        </ProtectedRoute>
     );
 }
