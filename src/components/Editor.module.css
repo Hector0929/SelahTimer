@@ -1,0 +1,125 @@
+/* 編輯器元件樣式 */
+
+.editorContainer {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--bg-card);
+    transition: border-color 0.6s ease, box-shadow 0.6s ease;
+}
+
+/* 儲存成功邊框動效 */
+.editorContainer.saved {
+    animation: borderGlow 1.5s ease-out;
+}
+
+/* 工具列 */
+.toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-sm) var(--space-md);
+    border-bottom: 1px solid var(--border-subtle);
+    background: var(--bg-secondary);
+}
+
+.modeTabs {
+    display: flex;
+    gap: 2px;
+    background: var(--bg-primary);
+    border-radius: var(--radius-sm);
+    padding: 2px;
+}
+
+.tab {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-xs) var(--space-md);
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    font-size: 0.813rem;
+    font-family: var(--font-sans);
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+}
+
+.tab:hover {
+    color: var(--text-secondary);
+}
+
+.tab.active {
+    background: var(--bg-card);
+    color: var(--text-primary);
+}
+
+/* 儲存狀態 */
+.saveStatus {
+    display: flex;
+    align-items: center;
+}
+
+.saving {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.savedLabel {
+    font-size: 0.75rem;
+    color: var(--accent-success);
+    animation: fadeIn 0.3s ease;
+}
+
+/* 內容區 */
+.content {
+    flex: 1;
+    min-height: 300px;
+    display: flex;
+}
+
+.textarea {
+    flex: 1;
+    padding: var(--space-lg);
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    line-height: 1.8;
+    resize: none;
+    outline: none;
+}
+
+.textarea::placeholder {
+    color: var(--text-muted);
+}
+
+.preview {
+    flex: 1;
+    padding: var(--space-lg);
+    overflow-y: auto;
+}
+
+.emptyPreview {
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* 響應式 */
+@media (max-width: 600px) {
+    .content {
+        min-height: 200px;
+    }
+
+    .textarea {
+        padding: var(--space-md);
+        font-size: 0.9rem;
+    }
+}

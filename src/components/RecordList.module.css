@@ -1,0 +1,135 @@
+/* 歷史紀錄列表樣式 */
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+.dayGroup {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    animation: fadeIn 0.4s ease;
+}
+
+.dateHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-xs) 0;
+    font-size: 0.813rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border-subtle);
+    margin-bottom: var(--space-xs);
+}
+
+.dayTotal {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+.record {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    overflow: hidden;
+}
+
+.record:hover {
+    border-color: var(--border-default);
+    background: var(--bg-card-hover);
+}
+
+.recordMain {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-md);
+}
+
+.recordTime {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-size: 0.875rem;
+    color: var(--text-primary);
+    font-variant-numeric: tabular-nums;
+}
+
+.timeSep {
+    color: var(--text-muted);
+}
+
+.recordMeta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.duration {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--accent-primary);
+}
+
+/* 展開區 */
+.expanded {
+    padding: 0 var(--space-md) var(--space-md);
+    border-top: 1px solid var(--border-subtle);
+    animation: fadeIn 0.2s ease;
+}
+
+.contentPreview {
+    padding: var(--space-sm) var(--space-md);
+    background: var(--bg-input);
+    border-radius: var(--radius-sm);
+    font-size: 0.813rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-top: var(--space-sm);
+    margin-bottom: var(--space-sm);
+    white-space: pre-wrap;
+}
+
+.actions {
+    display: flex;
+    gap: var(--space-sm);
+    margin-top: var(--space-sm);
+}
+
+/* 空狀態 */
+.empty {
+    text-align: center;
+    padding: var(--space-3xl) var(--space-lg);
+    color: var(--text-muted);
+}
+
+.emptyIcon {
+    font-size: 3rem;
+    margin-bottom: var(--space-md);
+    opacity: 0.5;
+}
+
+.emptyHint {
+    font-size: 0.813rem;
+    margin-top: var(--space-xs);
+}
+
+/* 響應式 */
+@media (max-width: 500px) {
+    .recordMain {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-xs);
+    }
+
+    .recordMeta {
+        width: 100%;
+        justify-content: space-between;
+    }
+}

@@ -1,0 +1,17 @@
+# 依賴套件
+node_modules/
+
+# Next.js 建置輸出
+.next/
+out/
+
+# 環境變數（含敏感資訊）
+.env.local
+.env*.local
+
+# 除錯日誌
+npm-debug.log*
+
+# 系統檔案
+.DS_Store
+*.swp

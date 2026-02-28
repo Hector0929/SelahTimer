@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Devotion Dashboard - Dark Gold</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "gold": {
+                  DEFAULT: "#D4AF37",
+                  light: "#E5C158",
+                  dark: "#B5952F",
+                  dim: "rgba(212, 175, 55, 0.15)",
+                  border: "rgba(212, 175, 55, 0.3)"
+              },
+              "bg-main": "#121212",
+              "bg-sidebar": "#1A1A1A",
+              "bg-card": "#1E1E1E",
+              "text-main": "#EAEAEA",
+              "text-muted": "#A1A1AA",
+            },
+            fontFamily: {
+              "display": ["Manrope", "sans-serif"]
+            },
+            backgroundImage: {
+                "gold-gradient": "linear-gradient(135deg, #D4AF37 0%, #B5952F 100%)",
+                "gold-subtle": "linear-gradient(180deg, rgba(212, 175, 55, 0.05) 0%, rgba(212, 175, 55, 0) 100%)"
+            }
+          },
+        },
+      }
+    </script>
+<style type="text/tailwindcss">
+        @layer utilities {
+            .gold-glow {
+                box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
+            }
+            .text-gold-gradient {
+                background: linear-gradient(to right, #D4AF37, #F3E5AB, #D4AF37);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-size: 200% auto;
+            }
+        }
+    </style>
+</head>
+<body class="bg-bg-main text-text-main font-display h-screen overflow-hidden flex selection:bg-gold selection:text-black">
+<aside class="w-64 h-full bg-bg-sidebar border-r border-white/10 hidden md:flex flex-col justify-between p-4">
+<div class="flex flex-col gap-6">
+<div class="flex items-center gap-3 px-2">
+<div class="bg-gold-dim border border-gold/20 p-2 rounded-lg">
+<span class="material-symbols-outlined text-gold text-2xl">spa</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-white text-lg font-bold leading-none tracking-wide">Devotion</h1>
+<p class="text-text-muted text-xs font-normal mt-1">Daily Walk</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-gold/10 border border-gold/20 text-gold group transition-all" href="#">
+<span class="material-symbols-outlined filled">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-white/5 text-text-muted hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">book</span>
+<span class="text-sm font-medium">Journal</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-white/5 text-text-muted hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="text-sm font-medium">Bible</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-white/5 text-text-muted hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="text-sm font-medium">Community</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-white/5 text-text-muted hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-sm font-medium">Insights</span>
+</a>
+</nav>
+</div>
+<div class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-white/5 text-text-muted hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+<div class="flex items-center gap-3 px-3 py-3 mt-2 border-t border-white/10">
+<div class="h-10 w-10 rounded-full bg-gray-800 bg-center bg-cover border border-gold/40" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCmHwMxfZ6cETFfCeav9hGIXZFfErKVJdBtu_g0jlz_Okaj0y40cQQDVnWuC4WqnynrtmBeB7A4xbGPtp1Gr4ZDpaNZa3YljV7jK10BcaTgRO3JR2ae7rbQplFqvYIlFIBJDoFhD0fiktMFT-JX3jegeGAxeWGUzZU-E0-vc18dymTum1Ubmlw9Me0_pB5bWlSsWRw42NIaetYA3lp0m0U-RV3MNhgmBx22m8tsBkBMtMh98FGuRL_ltIKQAxKh5toolqZjoBrk0rE");'></div>
+<div class="flex flex-col">
+<p class="text-white text-sm font-medium">Sarah Jenkins</p>
+<p class="text-text-muted text-xs">Premium Member</p>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 h-full overflow-y-auto bg-bg-main relative">
+<div class="absolute top-0 left-0 w-full h-96 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gold/5 via-bg-main/50 to-bg-main pointer-events-none z-0"></div>
+<header class="md:hidden flex items-center justify-between p-4 border-b border-white/10 bg-bg-sidebar relative z-10">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-gold">spa</span>
+<span class="font-bold text-white tracking-wide">Devotion</span>
+</div>
+<button class="text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</header>
+<div class="max-w-6xl mx-auto p-6 md:p-10 flex flex-col gap-8 relative z-10">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div class="flex flex-col gap-2">
+<h2 class="text-3xl md:text-4xl font-semibold text-white tracking-tight">Good Morning, <span class="text-gold-gradient">Sarah</span></h2>
+<p class="text-text-muted text-lg font-light">Continue your spiritual journey today.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center justify-center gap-2 px-6 py-3 bg-white/5 hover:bg-white/10 text-white rounded-xl border border-white/10 hover:border-gold/30 transition-all duration-300">
+<span class="material-symbols-outlined text-gold text-sm">edit</span>
+<span class="font-medium text-sm">Manual Entry</span>
+</button>
+<button class="flex items-center justify-center gap-2 px-6 py-3 bg-gold hover:bg-gold-light text-black rounded-xl font-bold shadow-lg shadow-gold/20 hover:shadow-gold/40 transition-all duration-300">
+<span class="material-symbols-outlined text-black">play_arrow</span>
+<span>Start Devotion</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-bg-card p-6 rounded-2xl border border-white/5 hover:border-gold/50 flex flex-col gap-4 relative overflow-hidden group transition-colors duration-500 gold-glow">
+<div class="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity duration-500">
+<span class="material-symbols-outlined text-8xl text-gold">local_fire_department</span>
+</div>
+<div class="flex items-center gap-3 relative z-10">
+<div class="p-2 rounded-lg bg-gold-dim text-gold border border-gold/10">
+<span class="material-symbols-outlined">local_fire_department</span>
+</div>
+<span class="text-xs font-semibold text-text-muted uppercase tracking-widest">Current Streak</span>
+</div>
+<div class="relative z-10">
+<div class="flex items-baseline gap-2">
+<h3 class="text-4xl font-bold text-white">12</h3>
+<span class="text-lg text-text-muted font-light">days</span>
+</div>
+<p class="text-sm text-gold mt-2 font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+                        +1 day since yesterday
+                    </p>
+</div>
+</div>
+<div class="bg-bg-card p-6 rounded-2xl border border-white/5 hover:border-gold/50 flex flex-col gap-4 relative overflow-hidden group transition-colors duration-500 gold-glow">
+<div class="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity duration-500">
+<span class="material-symbols-outlined text-8xl text-gold">schedule</span>
+</div>
+<div class="flex items-center gap-3 relative z-10">
+<div class="p-2 rounded-lg bg-gold-dim text-gold border border-gold/10">
+<span class="material-symbols-outlined">schedule</span>
+</div>
+<span class="text-xs font-semibold text-text-muted uppercase tracking-widest">Weekly Time</span>
+</div>
+<div class="relative z-10">
+<div class="flex items-baseline gap-2">
+<h3 class="text-4xl font-bold text-white">4h 30m</h3>
+</div>
+<p class="text-sm text-gold mt-2 font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+                        On track for 5h goal
+                    </p>
+</div>
+</div>
+<div class="bg-gradient-to-br from-bg-card to-[#2a2510] p-6 rounded-2xl border border-gold/30 flex flex-col justify-between relative overflow-hidden shadow-lg shadow-black/50">
+<div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 mix-blend-overlay"></div>
+<div class="absolute top-0 right-0 w-24 h-24 bg-gold blur-[50px] opacity-10"></div>
+<div class="flex items-center gap-2 mb-4 relative z-10">
+<span class="material-symbols-outlined text-gold text-sm">format_quote</span>
+<span class="text-xs font-bold text-gold uppercase tracking-widest">Verse of the day</span>
+</div>
+<div class="relative z-10">
+<p class="text-white font-serif text-xl italic leading-relaxed text-balance">"Be still, and know that I am God."</p>
+<div class="w-12 h-0.5 bg-gold/50 mt-4 mb-2"></div>
+<p class="text-text-muted text-sm tracking-wide">— Psalm 46:10</p>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<h3 class="text-xl font-bold text-white tracking-tight">Devotion History</h3>
+<a class="text-sm font-medium text-gold hover:text-white transition-colors flex items-center gap-1 group" href="#">
+                    View All
+                    <span class="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+<div class="bg-bg-card rounded-2xl border border-white/5 overflow-hidden shadow-inner">
+<div class="grid grid-cols-12 gap-4 p-4 border-b border-white/10 bg-black/20 text-xs font-semibold text-text-muted uppercase tracking-wider">
+<div class="col-span-6 md:col-span-5 pl-2">Topic / Title</div>
+<div class="col-span-3 md:col-span-2 hidden md:block">Type</div>
+<div class="col-span-3 md:col-span-2">Duration</div>
+<div class="col-span-3 md:col-span-2 text-right pr-2">Date</div>
+<div class="col-span-1 hidden md:block"></div>
+</div>
+<div class="grid grid-cols-12 gap-4 p-4 items-center border-b border-white/5 hover:bg-white/[0.03] transition-colors cursor-pointer group">
+<div class="col-span-6 md:col-span-5 flex items-center gap-4 pl-2">
+<div class="h-10 w-10 rounded-lg bg-gold-dim border border-gold/10 flex items-center justify-center text-gold shrink-0">
+<span class="material-symbols-outlined">mic</span>
+</div>
+<div class="flex flex-col">
+<span class="font-medium text-white group-hover:text-gold transition-colors">Morning Prayer &amp; Reflection</span>
+<span class="text-xs text-text-muted md:hidden">Audio Session</span>
+</div>
+</div>
+<div class="col-span-3 md:col-span-2 hidden md:flex items-center">
+<span class="px-2.5 py-1 rounded-full text-[10px] uppercase font-bold bg-white/5 text-text-muted border border-white/10 tracking-wider">
+                            Audio Sync
+                        </span>
+</div>
+<div class="col-span-3 md:col-span-2 text-sm text-gray-300 font-mono">
+                        15m 30s
+                    </div>
+<div class="col-span-3 md:col-span-2 text-right text-sm text-text-muted pr-2">
+                        Today, 8:00 AM
+                    </div>
+<div class="col-span-1 hidden md:flex justify-end opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-text-muted hover:text-gold transition-colors"><span class="material-symbols-outlined">more_horiz</span></button>
+</div>
+</div>
+<div class="grid grid-cols-12 gap-4 p-4 items-center border-b border-white/5 hover:bg-white/[0.03] transition-colors cursor-pointer group">
+<div class="col-span-6 md:col-span-5 flex items-center gap-4 pl-2">
+<div class="h-10 w-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-text-muted shrink-0 group-hover:border-gold/30 group-hover:text-gold transition-all">
+<span class="material-symbols-outlined">edit_note</span>
+</div>
+<div class="flex flex-col">
+<span class="font-medium text-white group-hover:text-gold transition-colors">Gratitude Journaling</span>
+<span class="text-xs text-text-muted md:hidden">Manual Entry</span>
+</div>
+</div>
+<div class="col-span-3 md:col-span-2 hidden md:flex items-center">
+<span class="px-2.5 py-1 rounded-full text-[10px] uppercase font-bold bg-white/5 text-text-muted border border-white/10 tracking-wider">
+                            Manual Entry
+                        </span>
+</div>
+<div class="col-span-3 md:col-span-2 text-sm text-gray-300 font-mono">
+                        --
+                    </div>
+<div class="col-span-3 md:col-span-2 text-right text-sm text-text-muted pr-2">
+                        Yesterday
+                    </div>
+<div class="col-span-1 hidden md:flex justify-end opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-text-muted hover:text-gold transition-colors"><span class="material-symbols-outlined">more_horiz</span></button>
+</div>
+</div>
+<div class="grid grid-cols-12 gap-4 p-4 items-center hover:bg-white/[0.03] transition-colors cursor-pointer group">
+<div class="col-span-6 md:col-span-5 flex items-center gap-4 pl-2">
+<div class="h-10 w-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-text-muted shrink-0 group-hover:border-gold/30 group-hover:text-gold transition-all">
+<span class="material-symbols-outlined">timer</span>
+</div>
+<div class="flex flex-col">
+<span class="font-medium text-white group-hover:text-gold transition-colors">Silent Meditation</span>
+<span class="text-xs text-text-muted md:hidden">Timed Session</span>
+</div>
+</div>
+<div class="col-span-3 md:col-span-2 hidden md:flex items-center">
+<span class="px-2.5 py-1 rounded-full text-[10px] uppercase font-bold bg-white/5 text-text-muted border border-white/10 tracking-wider">
+                            Timed Session
+                        </span>
+</div>
+<div class="col-span-3 md:col-span-2 text-sm text-gray-300 font-mono">
+                        20m 00s
+                    </div>
+<div class="col-span-3 md:col-span-2 text-right text-sm text-text-muted pr-2">
+                        Oct 24
+                    </div>
+<div class="col-span-1 hidden md:flex justify-end opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-text-muted hover:text-gold transition-colors"><span class="material-symbols-outlined">more_horiz</span></button>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 pb-6">
+<div class="bg-bg-card p-6 rounded-2xl border border-white/5 hover:border-gold/30 transition-colors">
+<h4 class="text-xs font-semibold text-text-muted uppercase tracking-wider mb-4">Focus Areas</h4>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1.5 rounded-lg bg-bg-main border border-white/10 text-gray-300 text-sm hover:border-gold/50 transition-colors cursor-default">Gratitude</span>
+<span class="px-3 py-1.5 rounded-lg bg-bg-main border border-white/10 text-gray-300 text-sm hover:border-gold/50 transition-colors cursor-default">Patience</span>
+<span class="px-3 py-1.5 rounded-lg bg-bg-main border border-white/10 text-gray-300 text-sm hover:border-gold/50 transition-colors cursor-default">Anxiety</span>
+<button class="px-3 py-1.5 rounded-lg border border-dashed border-white/20 text-text-muted hover:text-gold hover:border-gold text-sm flex items-center gap-1 transition-all">
+<span class="material-symbols-outlined text-sm">add</span> Add
+                    </button>
+</div>
+</div>
+<div class="bg-gold-dim p-6 rounded-2xl border border-gold/20 flex items-center justify-between group cursor-pointer hover:bg-gold/20 transition-all">
+<div>
+<h4 class="text-lg font-bold text-white mb-1 group-hover:text-gold transition-colors">Weekly Review</h4>
+<p class="text-sm text-text-muted">Your spiritual insights are ready.</p>
+</div>
+<button class="h-12 w-12 rounded-full bg-gold text-black flex items-center justify-center hover:bg-white hover:text-black transition-all shadow-lg shadow-gold/10 group-hover:scale-110">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+
+</body></html>

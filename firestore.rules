@@ -1,0 +1,22 @@
+rules_version = '2';
+
+// SelahTimer Firestore 安全規則
+// 請在 Firebase Console > Firestore > Rules 貼上此規則
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 靈修紀錄：僅允許使用者存取自己的資料
+    match /devotion_records/{recordId} {
+      // 允許已登入使用者讀取自己的紀錄
+      allow read: if request.auth != null
+                  && resource.data.user_id == request.auth.uid;
+
+      // 允許已登入使用者建立紀錄（user_id 必須與自己相符）
+      allow create: if request.auth != null
+                    && request.resource.data.user_id == request.auth.uid;
+
+      // 允許已登入使用者更新/刪除自己的紀錄
+      allow update, delete: if request.auth != null
+                            && resource.data.user_id == request.auth.uid;
+    }
+  }
+}

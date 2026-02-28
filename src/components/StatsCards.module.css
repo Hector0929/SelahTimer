@@ -1,0 +1,99 @@
+/* 統計卡片樣式 — 匹配 Stitch 設計 */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-md);
+}
+
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--accent-primary-muted);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    transition: all var(--transition-normal);
+    animation: fadeIn 0.4s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent-primary);
+    box-shadow: var(--shadow-md);
+}
+
+/* 深色模式：統一金色邊框（匹配 Stitch Dark Gold） */
+.streakCard,
+.weekCard,
+.monthCard,
+.countCard {
+    border-color: rgba(212, 175, 55, 0.15);
+}
+
+.streakCard:hover,
+.weekCard:hover,
+.monthCard:hover,
+.countCard:hover {
+    border-color: var(--accent-primary);
+}
+
+/* 淺色模式：不同卡片用不同淺色調 */
+[data-theme="light"] .card {
+    border-color: var(--border-subtle);
+    box-shadow: var(--shadow-sm);
+}
+
+[data-theme="light"] .card:hover {
+    border-color: var(--accent-primary);
+    box-shadow: var(--shadow-md);
+}
+
+.icon {
+    font-size: 1.75rem;
+    flex-shrink: 0;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.value {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--accent-primary);
+    line-height: 1.2;
+}
+
+.label {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+/* 響應式 */
+@media (max-width: 900px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    .grid {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-sm);
+    }
+
+    .card {
+        padding: var(--space-md);
+    }
+
+    .value {
+        font-size: 1.25rem;
+    }
+}

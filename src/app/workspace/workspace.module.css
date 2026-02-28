@@ -1,0 +1,136 @@
+/* 工作區頁面樣式 */
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: var(--space-xl);
+    min-height: calc(100vh - 64px);
+}
+
+.workspace {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+    animation: slideUp 0.5s ease;
+}
+
+/* 計時器區 */
+.timerSection {
+    padding: var(--space-2xl) 0;
+}
+
+/* 編輯器區 */
+.editorSection {
+    flex: 1;
+}
+
+/* 載入中 */
+.loadingContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-md);
+    min-height: calc(100vh - 64px);
+    color: var(--text-muted);
+}
+
+/* 恢復提示卡片 */
+.recoveryCard {
+    max-width: 500px;
+    margin: var(--space-3xl) auto;
+    text-align: center;
+    background: var(--bg-card);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-xl);
+    padding: var(--space-2xl);
+    animation: scaleIn 0.3s ease;
+}
+
+.recoveryIcon {
+    font-size: 3rem;
+    margin-bottom: var(--space-md);
+}
+
+.recoveryCard h2 {
+    font-size: 1.25rem;
+    margin-bottom: var(--space-sm);
+}
+
+.recoveryCard p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: var(--space-lg);
+}
+
+.recoveryPreview {
+    padding: var(--space-md);
+    background: var(--bg-input);
+    border-radius: var(--radius-md);
+    font-size: 0.813rem;
+    color: var(--text-muted);
+    text-align: left;
+    margin-bottom: var(--space-lg);
+}
+
+.recoveryActions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+/* 完成中遮罩 */
+.completingOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-md);
+    z-index: 999;
+    color: var(--text-primary);
+}
+
+/* 錯誤橫幅 */
+.errorBanner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-md);
+    background: var(--accent-danger-muted);
+    border: 1px solid var(--accent-danger);
+    border-radius: var(--radius-md);
+    color: var(--accent-danger);
+    font-size: 0.875rem;
+    animation: fadeIn 0.3s ease;
+}
+
+.errorClose {
+    background: none;
+    border: none;
+    color: var(--accent-danger);
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 0 var(--space-xs);
+    opacity: 0.7;
+}
+
+.errorClose:hover {
+    opacity: 1;
+}
+
+/* 響應式 */
+@media (max-width: 600px) {
+    .container {
+        padding: var(--space-md);
+    }
+
+    .timerSection {
+        padding: var(--space-lg) 0;
+    }
+}
