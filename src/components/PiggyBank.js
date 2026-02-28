@@ -25,17 +25,15 @@ export default function PiggyBank({ yearTotal = 0, yearSessionCount = 0, year = 
         <div className={styles.container}>
             {/* 左側：撲滿動畫 */}
             <div className={styles.piggySection}>
-                <div className={styles.piggyBody}>
-                    <div className={styles.imageWrapper}>
-                        <Image
-                            src="/images/piggy_bank.png"
-                            alt="靈修撲滿"
-                            width={160}
-                            height={160}
-                            className={styles.piggyImage}
-                            priority
-                        />
-                    </div>
+                <div className={styles.imageWrapper}>
+                    <Image
+                        src="/images/piggy_bank.png"
+                        alt="靈修撲滿"
+                        width={240}
+                        height={240}
+                        className={styles.piggyImage}
+                        priority
+                    />
 
                     {/* 投幣動畫（每次載入閃一次） */}
                     {yearSessionCount > 0 && (
