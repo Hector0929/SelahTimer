@@ -2,6 +2,7 @@
 
 import { useState, useCallback } from 'react';
 import Markdown from 'react-markdown';
+import remarkBreaks from 'remark-breaks';
 import styles from './Editor.module.css';
 
 /**
@@ -73,11 +74,12 @@ export default function Editor({
                         onChange={handleChange}
                         placeholder="寫下你的靈修心得..."
                         spellCheck={false}
+                        enterKeyHint="enter"
                     />
                 ) : (
                     <div className={`${styles.preview} markdown-body`}>
                         {value ? (
-                            <Markdown>{value}</Markdown>
+                            <Markdown remarkPlugins={[remarkBreaks]}>{value}</Markdown>
                         ) : (
                             <p className={styles.emptyPreview}>尚未輸入任何內容</p>
                         )}
