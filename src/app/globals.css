@@ -8,38 +8,52 @@
 
 /* --- 深色金色主題 (預設) --- */
 :root {
-  /* 色彩系統 — 深黑 + 金色（來自 Stitch Dark Gold Dashboard） */
-  --bg-primary: #121212;
-  --bg-secondary: #1A1A1A;
-  --bg-card: #1E1E1E;
-  --bg-card-hover: #2a2510;
-  --bg-input: #1A1A1A;
-  --bg-modal-overlay: rgba(0, 0, 0, 0.7);
+  /* 色彩系統 — 活潑溫暖調 (參考怪獸村莊設計) */
+  --bg-primary: #FEF9E7;
+  /* 溫暖奶油黃 */
+  --bg-secondary: #FFFDF5;
+  /* 極淺奶油背景 */
+  --bg-card: #FFFFFF;
+  /* 純白卡片 */
+  --bg-card-hover: #FFFBEB;
+  /* 卡片懸停色 */
+  --bg-input: #FFFFFF;
+  /* 輸入框背景 */
+  --bg-modal-overlay: rgba(0, 0, 0, 0.4);
 
-  /* 主色調 — 金色 #D4AF37 */
-  --accent-primary: #D4AF37;
-  --accent-primary-hover: #E5C158;
-  --accent-primary-muted: rgba(212, 175, 55, 0.15);
-  --accent-primary-glow: rgba(212, 175, 55, 0.3);
-  --accent-primary-subtle: rgba(212, 175, 55, 0.05);
+  /* 主色調 — 陽光橘與咖啡 */
+  --accent-primary: #FFB74D;
+  /* 陽光橘 */
+  --accent-primary-hover: #FFA726;
+  --accent-primary-muted: rgba(255, 183, 77, 0.15);
+  --accent-primary-glow: rgba(255, 183, 77, 0.3);
+  --accent-primary-subtle: rgba(255, 183, 77, 0.05);
+  /* Added missing subtle accent */
 
-  /* 輔助色 */
-  --accent-success: #4ade80;
-  --accent-success-muted: rgba(74, 222, 128, 0.15);
-  --accent-danger: #f87171;
-  --accent-danger-muted: rgba(248, 113, 113, 0.15);
-  --accent-info: #60a5fa;
-  --accent-info-muted: rgba(96, 165, 250, 0.15);
+  /* 輔助色 — 粉嫩调 */
+  --accent-success: #81C784;
+  /* 粉嫩綠 */
+  --accent-success-muted: rgba(129, 199, 132, 0.15);
+  --accent-danger: #E57373;
+  /* 珊瑚紅 */
+  --accent-danger-muted: rgba(229, 115, 115, 0.15);
+  --accent-info: #64B5F6;
+  /* 天空藍 */
+  --accent-info-muted: rgba(100, 181, 246, 0.15);
 
-  /* 文字 */
-  --text-primary: #EAEAEA;
-  --text-secondary: #A1A1AA;
-  --text-muted: #6b6b80;
-  --text-inverse: #121212;
+  /* 文字 — 咖啡與灰 */
+  --text-primary: #5D4037;
+  /* 深咖啡色 */
+  --text-secondary: #8D6E63;
+  /* 淺咖啡色 */
+  --text-muted: #BDBDBD;
+  /* 靜謐灰 */
+  --text-inverse: #FFFFFF;
+  /* 反白文字 */
 
   /* 邊框 */
-  --border-subtle: rgba(212, 175, 55, 0.08);
-  --border-default: rgba(212, 175, 55, 0.2);
+  --border-subtle: rgba(93, 64, 55, 0.06);
+  --border-default: rgba(93, 64, 55, 0.1);
   --border-focus: var(--accent-primary);
 
   /* 間距 */
@@ -51,22 +65,22 @@
   --space-2xl: 48px;
   --space-3xl: 64px;
 
-  /* 圓角（Stitch: ROUND_EIGHT） */
-  --radius-sm: 6px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius-xl: 16px;
+  /* 圓角 — 更圓滑活潑 */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 32px;
   --radius-full: 9999px;
 
-  /* 字型（Stitch: Manrope） */
-  --font-sans: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  /* 字型 */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-serif: 'Noto Serif TC', Georgia, serif;
 
-  /* 陰影 */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
-  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.6);
-  --shadow-glow: 0 0 20px var(--accent-primary-glow);
+  /* 陰影 — 軟陰影 */
+  --shadow-sm: 0 2px 4px rgba(93, 64, 55, 0.05);
+  --shadow-md: 0 6px 16px rgba(93, 64, 55, 0.08);
+  --shadow-lg: 0 12px 40px rgba(93, 64, 55, 0.12);
+  --shadow-glow: 0 0 15px var(--accent-primary-glow);
 
   /* 過渡 */
   --transition-fast: 150ms ease;
@@ -74,7 +88,8 @@
   --transition-slow: 400ms ease;
 
   /* 主題色 */
-  color-scheme: dark;
+  color-scheme: light;
+  /* Changed to light as per the new color scheme */
 }
 
 /* --- 淺色主題 (白底 + 藍色，來自 Stitch Light Dashboard) --- */
@@ -144,6 +159,26 @@ body {
   min-height: 100vh;
   line-height: 1.6;
   transition: background var(--transition-normal), color var(--transition-normal);
+}
+
+/* --- 滾動條樣式 --- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--text-primary);
+  /* 深咖啡色 */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4E342E;
+  /* 稍微深一點的咖啡色 */
 }
 
 /* --- 全域動畫 --- */
@@ -463,5 +498,5 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--text-muted);
+  background: var(--text-secondary);
 }
