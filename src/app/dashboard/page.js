@@ -16,6 +16,7 @@ import StatsCards from '@/components/StatsCards';
 import WeeklyChart from '@/components/WeeklyChart';
 import RecordList from '@/components/RecordList';
 import ManualEntryModal from '@/components/ManualEntryModal';
+import EditDurationModal from '@/components/EditDurationModal';
 import PiggyBank from '@/components/PiggyBank';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import styles from './dashboard.module.css';
