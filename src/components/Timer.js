@@ -7,6 +7,9 @@ import styles from './Timer.module.css';
 /**
  * 計時器元件
  * 
+ * 使用 Date.now() 時間戳計算經過秒數，避免瀏覽器背景分頁
+ * 對 setInterval 做節流（throttle）導致計時不準確的問題。
+ * 
  * Props:
  *  - initialSeconds: 初始秒數（恢復用）
  *  - isRunning: 是否正在計時
@@ -28,43 +31,63 @@ export default function Timer({
     const [seconds, setSeconds] = useState(initialSeconds);
     const intervalRef = useRef(null);
     const onTickRef = useRef(onTick);
+    // 記錄本次「開始/繼續」計時的時間戳
+    const startTimestampRef = useRef(null);
+    // 記錄暫停前已累積的秒數（支援暫停→繼續）
+    const accumulatedRef = useRef(initialSeconds);
 
     // 保持 onTick 回調為最新版本
     useEffect(() => {
         onTickRef.current = onTick;
     }, [onTick]);
 
-    // 初始化時設定秒數
+    // 初始化時設定秒數（跨裝置恢復用）
     useEffect(() => {
         if (initialSeconds > 0) {
             setSeconds(initialSeconds);
+            accumulatedRef.current = initialSeconds;
         }
     }, [initialSeconds]);
 
-    // 計時邏輯
+    // 計時邏輯：使用 Date.now() 時間戳計算，不依賴 setInterval 觸發次數
     useEffect(() => {
         if (isRunning) {
-            intervalRef.current = setInterval(() => {
-                setSeconds((prev) => {
-                    const next = prev + 1;
-                    // 使用 setTimeout 將 onTick 排到下一個微任務，避免在 setState updater 內觸發父元件的 setState
-                    setTimeout(() => {
-                        if (onTickRef.current) onTickRef.current(next);
-                    }, 0);
-                    return next;
-                });
-            }, 1000);
+            // 記錄啟動時間戳
+            startTimestampRef.current = Date.now();
+
+            // 計算並更新經過時間
+            const updateTime = () => {
+                const now = Date.now();
+                const delta = Math.floor((now - startTimestampRef.current) / 1000);
+                const total = accumulatedRef.current + delta;
+                setSeconds(total);
+                if (onTickRef.current) onTickRef.current(total);
+            };
+
+            // 每秒更新顯示（即使被背景節流，回來時 updateTime 會算出正確值）
+            intervalRef.current = setInterval(updateTime, 1000);
+
+            // 分頁回前景時立即校正時間，不等待下一次 setInterval
+            const handleVisibility = () => {
+                if (document.visibilityState === 'visible') {
+                    updateTime();
+                }
+            };
+            document.addEventListener('visibilitychange', handleVisibility);
+
+            return () => {
+                if (intervalRef.current) clearInterval(intervalRef.current);
+                document.removeEventListener('visibilitychange', handleVisibility);
+            };
         } else {
+            // 暫停時：將目前秒數存入累積值，供下次繼續時使用
+            accumulatedRef.current = seconds;
             if (intervalRef.current) {
                 clearInterval(intervalRef.current);
                 intervalRef.current = null;
             }
         }
-
-        return () => {
-            if (intervalRef.current) clearInterval(intervalRef.current);
-        };
-    }, [isRunning]);
+    }, [isRunning]); // eslint-disable-line react-hooks/exhaustive-deps
 
     // 格式化時間
     const formatTime = useCallback((totalSec) => {

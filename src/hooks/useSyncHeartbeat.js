@@ -62,7 +62,9 @@ export function useSyncHeartbeat({ docId, getElapsed, getContent, enabled, onSyn
         if (!enabled || !docId) return;
 
         const handleVisibilityChange = () => {
-            if (document.visibilityState === 'hidden') {
+            // 切到背景時同步一次（盡量在離開前保存）
+            // 回到前景時再同步一次（確保 Firestore 有最新的經過時間）
+            if (document.visibilityState === 'hidden' || document.visibilityState === 'visible') {
                 sync();
             }
         };
