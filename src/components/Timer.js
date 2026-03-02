@@ -41,13 +41,13 @@ export default function Timer({
         onTickRef.current = onTick;
     }, [onTick]);
 
-    // 初始化時設定秒數（跨裝置恢復用）
+    // 初始化與恢復邏輯：僅在非計時狀態下，才允許外部傳入的 initialSeconds 更新累計值
     useEffect(() => {
-        if (initialSeconds > 0) {
+        if (initialSeconds > 0 && !isRunning) {
             setSeconds(initialSeconds);
             accumulatedRef.current = initialSeconds;
         }
-    }, [initialSeconds]);
+    }, [initialSeconds, isRunning]);
 
     // 計時邏輯：使用 Date.now() 時間戳計算，不依賴 setInterval 觸發次數
     useEffect(() => {
