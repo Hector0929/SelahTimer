@@ -1,20 +1,32 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
+import { isInAppBrowser, getCurrentUrl } from '@/lib/detector';
 import styles from './login.module.css';
 
 export default function LoginPage() {
     const { user, loading, signIn } = useAuth();
     const router = useRouter();
+    const [isInApp, setIsInApp] = useState(false);
+    const [copySuccess, setCopySuccess] = useState(false);
 
-    // 已登入則導向靈修頁
+    // 已登入則導向靈修頁，並檢查瀏覽器環境
     useEffect(() => {
         if (!loading && user) {
             router.push('/workspace');
         }
+        setIsInApp(isInAppBrowser());
     }, [user, loading, router]);
+
+    const handleCopyLink = () => {
+        const url = getCurrentUrl();
+        navigator.clipboard.writeText(url).then(() => {
+            setCopySuccess(true);
+            setTimeout(() => setCopySuccess(false), 2000);
+        });
+    };
 
     const handleSignIn = async () => {
         try {
@@ -62,6 +74,24 @@ export default function LoginPage() {
                         <span>成長統計，見證信仰旅程</span>
                     </div>
                 </div>
+
+                {/* 偵測到內建瀏覽器時的警告 */}
+                {isInApp && (
+                    <div className={styles.inAppWarning}>
+                        <div className={styles.warningIcon}>⚠️</div>
+                        <div className={styles.warningContent}>
+                            <h3>偵測到內建瀏覽器</h3>
+                            <p>因 Google 安全限制，內建瀏覽器無法直接登入。</p>
+                            <p className={styles.guideText}>請點點選右上角「...」，選擇 <strong>「使用預設瀏覽器開啟」</strong> 即可正常登入。</p>
+                            <button
+                                className={styles.copyBtn}
+                                onClick={handleCopyLink}
+                            >
+                                {copySuccess ? '✅ 已複製連結' : '📋 複製連結手動貼上'}
+                            </button>
+                        </div>
+                    </div>
+                )}
 
                 {/* 登入按鈕 */}
                 <button className={styles.googleBtn} onClick={handleSignIn}>

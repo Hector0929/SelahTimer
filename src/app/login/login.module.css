@@ -141,6 +141,76 @@
     border-radius: 50%;
 }
 
+/* 內建瀏覽器警告 */
+.inAppWarning {
+    display: flex;
+    gap: var(--space-md);
+    padding: var(--space-lg);
+    background: rgba(234, 67, 53, 0.08);
+    border: 1px solid rgba(234, 67, 53, 0.2);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-xl);
+    text-align: left;
+    animation: fadeIn 0.4s ease;
+}
+
+.warningIcon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.warningContent h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #ea4335;
+    margin-bottom: var(--space-xs);
+}
+
+.warningContent p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: var(--space-sm);
+}
+
+.guideText {
+    background: rgba(255, 255, 255, 0.5);
+    padding: var(--space-sm);
+    border-radius: var(--radius-sm);
+    border-left: 3px solid #ea4335;
+}
+
+.copyBtn {
+    width: 100%;
+    padding: var(--space-sm) var(--space-md);
+    background: var(--text-primary);
+    color: var(--text-inverse);
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    margin-top: var(--space-sm);
+}
+
+.copyBtn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .orb2 {
     position: absolute;
     bottom: -20%;
